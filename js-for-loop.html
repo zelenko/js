@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html><head><title>JS For Loop</title></head>
+<body>
+
+<script>
+window.onload = function(){
+    // when page loads
+    document.getElementById("block").innerHTML=findProp(numbers);
+};
+
+function findProp(obj) {
+    var text = "";
+    for (i = 0; i< obj.length; i++){
+        text += obj[i] + " the number is " + i + "<br>";
+    }
+    return text;
+}
+
+var numbers = ["one", "two", "three", "four", "five", "six", "seven"];
+
+</script>
+
+<div id="block"></div>
+
+</body>
+</html>

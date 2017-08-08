@@ -13,10 +13,10 @@ function NavigateThrough (event)
 		switch (event.keyCode ? event.keyCode : event.which ? event.which : null)
 		{
 			case 0x25:
-				link = document.getElementById ('NextLink');
+				link = document.getElementById ('PrevLink');
 				break;
 			case 0x27:
-				link = document.getElementById ('PrevLink');
+				link = document.getElementById ('NextLink');
 				break;
 			case 0x26:
 				link = document.getElementById ('UpLink');

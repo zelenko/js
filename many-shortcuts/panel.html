@@ -4,15 +4,16 @@
     <script type="text/javascript" src="shortcut.js"></script>
 
 <script>
-shortcut.add("Ctrl+Down",function() {
-	myFunction()
-});
 shortcut.add("F1",function() {
 	myFunction()
 });
 shortcut.add("F2",function() {
 	red()
 });
+shortcut.add("esc",function() {
+	esc()
+});
+
 </script>
 <style>
 #panel, .flip {
@@ -22,7 +23,19 @@ shortcut.add("F2",function() {
     background-color: green;
     color: white;
     border: solid 1px #a6d8a8;
-    margin: auto;
+  //margin: auto;
+    border-radius: 5px;
+    text-align: center;
+
+    position: fixed; 
+    width: 50%; /* Set your desired with */
+    z-index: 2; /* Make sure its above other items. */
+    top: 50%;
+    left: 50%;
+    margin-top: -10%; /* Changes with height. */
+    margin-left: -25%; /* Your width divided by 2. */
+    /* This will be different in future releases.
+        Work in progress.*/
 }
 
 #panel {
@@ -32,7 +45,7 @@ shortcut.add("F2",function() {
 </head>
 <body>
 
-<a onclick="myFunction()"><div class="flip">Click to show panel or Ctrl + Down or F1</div></a>
+<a onclick="myFunction()"><div class="flip">F1-Green &emsp; F2-Red</div></a>
 
 <div id="panel">
   <p>This panel contains a div element, which is hidden by default (display: none).</p>
@@ -42,10 +55,7 @@ shortcut.add("F2",function() {
 </div>
 
 <script>
-function myFunction2() {
-	
-    document.getElementById("panel").style.display = "block";
-}
+
 function myFunction() {
     var x = document.getElementById('panel');
     if (x.style.backgroundColor != 'green') {
@@ -59,6 +69,7 @@ function myFunction() {
         x.style.display = 'none';
     }
 }
+
 function red() {
     var x = document.getElementById('panel');
     if (x.style.backgroundColor != 'red') {
@@ -73,6 +84,9 @@ function red() {
     }
 }
 
+function esc() {
+    document.getElementById("panel").style.display = "none";
+}
 
 </script>
 

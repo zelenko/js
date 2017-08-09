@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html><head><title>Center Block</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+    #mydiv1 {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #mydiv2 {
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+
+    #mydiv3 {
+        position: fixed; 
+        width: 20%; /* Set your desired with */
+        z-index: 2; /* Make sure its above other items. */
+        top: 50%;
+        left: 50%;
+        margin-top: -10%; /* Changes with height. */
+        margin-left: -10%; /* Your width divided by 2. */
+        /* You will not need the below, its only
+           for styling   purposes.*/
+    }
+    .one {
+        border: 2px solid #555555;
+        background-color: #ccc;
+        border-radius: 5px;
+        text-align: center;
+        padding: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div id="mydiv3" class="one">Ctrl + Up, Ctrl + Down, Ctrl + Left, Ctrl + Right</div>
+
+
+</body>
+</html>

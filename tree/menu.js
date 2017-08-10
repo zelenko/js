@@ -20,7 +20,6 @@ var iv = -1;    // to store the index of current vertical item in $vli
 
 // TOP MENU   ================================================
 // accessed on press the Left /Right arrow keys
-// show current horisontal menu TOP MENU
 function showOli(index) {
   iv = -1;       // reset imdex of vertical menu when moves to other horisontal menu
   url_adr = '';     // empty this variable
@@ -35,16 +34,9 @@ function showOli(index) {
   if(crt_oli.getElementsByTagName('ul').length > 0 && crt_oli.getElementsByTagName('ul')[0].getElementsByTagName('li')) {
     vli = crt_oli.getElementsByTagName('ul')[0].getElementsByTagName('li');
     nrvli = vli.length;
-    //document.getElementById("block").innerHTML = "line 46: "+ "parent: " + ih + " sub: " + iv;
     document.getElementById("url").innerHTML = 'url 39: ' + url_adr;
     showVli();     // calls showVli() to set class="vli" to all list in its vertical menu
 
-/*
-    string = [].map.call( vli, function(node){
-        return node.textContent || node.innerText || " ??? ";
-    }).join(" -- ");
-  */  
-    //document.getElementById("block").innerHTML = "Paragraph changed! " + nrvli + " - " + vli[1].id;
     document.getElementById("url").innerHTML = 'url 48: ' + url_adr;
   }
   else {
@@ -57,6 +49,8 @@ function showOli(index) {
     } 
     vli = [];        // empties $vli
     nrvli = 0;
+
+    // this is for troubleshooting only
     document.getElementById("block2").innerHTML = "error line 57, id: " + ih;
     document.getElementById("url").innerHTML = 'url 61: ' + url_adr;
   }
@@ -64,7 +58,6 @@ function showOli(index) {
 
 // SUBMENU =========================================
 // accessed on press the Up /Down arrow keys
-// show current vertical menu
 function showVli(index) {
   //url_adr = '';       // empties this variable
   if(nrvli > 0) {
@@ -85,17 +78,15 @@ function showVli(index) {
   } 
 }
 
-// adds in $url_adr the "href" value of the anchor element <a> passed in "link" parameter
+// Assign "url_adr" when mouse clicked or keyboard key pressed.
 function setUrlAdr(link) {
    //url_adr = link.onclick;
    if (link.onclick !== null) { url_adr = link.onclick.toString().split("'")[1]; }
    else {url_adr = link.href.toString().split("#")[1];}
-  //document.getElementById("url").innerHTML = 'url 104: ' + url_adr;
 }
 
 // function with code to get the pressed keyboard key
 function KeyCheck(e){
- // http://coursesweb.net/
   nroli = oli.length;
    var keyid = (window.event) ? event.keyCode : e.keyCode;       // get the code of the key pressed
 
@@ -104,16 +95,13 @@ function KeyCheck(e){
       // Left
       case 37:
         ih--;
-        //if(ih < 0) ih = 0;
         if(ih < 0) ih = (nroli -1);
         showOli(ih);
         break;
       // Up
       case 38:
         iv--;
-        //if(iv < 0) iv = 0;
         if(iv < 0) iv = (nrvli-1);
-        //item(iv,ih,keyid);
         showVli(iv);
         break;
       // Right
@@ -132,11 +120,9 @@ function KeyCheck(e){
       case 13:
         if(url_adr != '') {
           //window.location = url_adr;
-          //document.getElementById("block").innerHTML = "selected menu ID: " + ih + " submenu: " + iv + " ==> " + url_adr;
           // nrvli is the total number of items in submenu
           // ih is the top menu id
           // iv is the submenu id
-          //item(ih,iv,url_adr);
           //keyboard(url_adr);
           writer(url_adr);
         } else {
@@ -170,12 +156,6 @@ function KeyCheck(e){
         break;
    }
 }
-
-// from Keyboard, pressed Enter.
-function keyboard(i){
-  document.getElementById("block2").innerHTML = "Pressed Enter: " + i;
-}
-
 
 // access the KeyCheck() function when a keyboard button is pressed
 document.onkeydown = KeyCheck;

@@ -16,24 +16,35 @@ shortcut.add("esc",function() {
 });
 
 </script>
-<style>
+<style type="text/css" media="screen, print">
+@font-face {
+  font-family: 'Eclipse';
+  src: url('eclipse.ttf') format('truetype');
+  font-weight: bold; 
+}
+
+body {background-color: gray;}
+h1, h2, h3, p, div { font-family: 'Eclipse', 'Courier New'; color: #FFFF00; }
 #panel, .flip {
-    font-size: 16px;
+    font-size: 25px;
+    font-family: 'Eclipse', 'Courier New';
     padding: 10px;
     text-align: center;
-    background-color: green;
-    color: white;
-    border: solid 1px #a6d8a8;
+    background-color: navy;
+    color: #FFFF00;
+  //border: solid 1px #a6d8a8;
   //margin: auto;
-    border-radius: 5px;
+    border-radius: 0px;
     text-align: center;
+    border: 5px solid #FFFF00;
+    border-style: double;
 
     position: fixed; 
     width: 50%; /* Set your desired with */
     z-index: 2; /* Make sure its above other items. */
     top: 50%;
     left: 50%;
-    margin-top: -10%; /* Changes with height. */
+    margin-top: -15%; /* Changes with height. */
     margin-left: -25%; /* Your width divided by 2. */
     /* This will be different in future releases.
         Work in progress.*/
@@ -46,10 +57,13 @@ shortcut.add("esc",function() {
 </head>
 <body>
 
-<a onclick="myFunction()"><div class="flip">F1-Green &emsp; F2-Red</div></a>
+<a onclick="myFunction()"><div class="flip">F1-navy &emsp; F2-Red</div></a>
 
 <div id="panel">
-  <p>This panel contains a div element, which is hidden by default (display: none).</p>
+  <p>ESC: save and exit.</p>
+  <p>F12: cancel.</p>
+  <p>&darr;: pick menu item</p>
+  <p>&larr; &uarr; &rarr; &darr;</p>
   <p>It is styled with CSS and we use JavaScript to show it (display: block).</p>
   <p>How it works: Notice that the p element with class="flip" has an onclick attribute attached to it. When the user clicks on the p element, a function called myFunction() is executed, which changes the style of the div with id="panel" from display:none (hidden) to display:block (visible).</p>
   <p>You will learn more about JavaScript in our JavaScript Tutorial.</p>
@@ -59,8 +73,8 @@ shortcut.add("esc",function() {
 
 function myFunction() {
     var x = document.getElementById('panel');
-    if (x.style.backgroundColor != 'green') {
-        x.style.backgroundColor = 'green';
+    if (x.style.backgroundColor != 'navy') {
+        x.style.backgroundColor = 'navy';
         x.style.display = 'block';
         return;
     }

@@ -1,59 +1,102 @@
 #menuv {
  position:relative;
- padding:2px;
+ padding:14px;
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 1em;
+ color: #008000;
+ border:1px solid #eeefff;
 }
 
-  /* Properties for horizontal menu */
-#menuv li {
+  /* Properties for TOP horizontal menu */
+#menuv > li {
  float:left;
- margin:1px 8px;
- border:1px solid blue;
- background-color:#daedfe;
- padding:1px 2px;
+ margin:6px; /* space between top menu items  */
+ border:0px solid navy; /* top menu items only */
+ background-color:#eeefff;
+ padding:8px;
  list-style-type:none;
  font-weight:600;
  text-align:left;
- text-decoration:nderline;
 }
-#menuv .olishow {
- background-color: yellow;
+/* top menu HOVER keyboard only */
+#menuv > .olishow {
+ background-color: #cccfff;
+ text-decoration:none;
+ border:0px red solid;
+ color: #e60000;
 }
+/* top menu hover for keyboard onlyl */
+#menuv > .olishow > a {
+  color:#e60000;
+  text-decoration:none;
+}
+
+/* top menu only for items with no submenu */
+#menuv > li.oli > a,
+#menuv > li.oli > a:link,
+#menuv > li.oli > a:active,
+#menuv > li.oli > a:visited {
+  padding: 9px 0px 8px 0px; /* top, right, botom, left */
+  text-decoration:none;
+  color: #008000;
+}
+
+/* top menu hover for items with no submenu, for mouse only */
+#menuv > li.oli > a:hover, #menuv > li.oli:hover {
+  background-color: #cccfff;
+  color: #e60000;
+}
+/* top menu hover for items with submenus, for mouse only 
+#menuv > li.oli > a:hover, {
+    color: #e60000;
+    background-color: #cccfff;
+    border:0px solid navy;
+} */
+
 
   /* Properties for vertical menu */
-#menuv .oli ul, #menuv .olishow ul {
+#menuv .oli ul, #menuv .olishow  ul {
  display:none;
  position:absolute;
- margin:1px auto 1px -8px;
- background-color:#f0f1fe;
- border:1px dashed blue;
- padding:1px;
+ margin:8px auto auto -8px; /*top, right, bottom, left  */
+ border:0px solid red;
+ padding:0px;
+ color: #e60000;
+}
+/*  items inside vertical summenu */
+#menuv>li>ul>li {
+  position:relative;
+  clear:both;
+  width:100%;
+  margin:0px 0;
+  border-bottom:0px solid #ccc;
+  /* background-color:#FFFF00; */
+  padding:0px;
+  display:block;
 }
 
-#menuv li ul li {
- position:relative;
- clear:both;
- width:99%;
- margin:1px 0;
- border:none;
- background-color:#edfeed;
- padding:1px;
-}
-
+/* Submenu block */
 #menuv li:hover ul, #menuv .olishow ul {
- display:block;
+  display:block;
+  /*background-color:red;
+  padding: 0px;
+  text-decoration:none;
+  border:4px solid navy; /* this has no effect */
 }
 
   /* Links in sub-menu */
 #menuv ul li a {
- display:block;
- margin:0;
- font-weight:normal;
- padding:1px;
+  display:block;
+  background-color:#eeefff;
+  color:#008000;
+  font-weight:normal;
+  padding:4px;
+  text-decoration:none;
 }
 
 #menuv ul li a:hover, #menuv ul .vlishow a {
- background-color:#fefefe;
+ background-color:#cccfff;
  text-decoration:none;
- font-style:oblique;
- color:#fb0001;
+ color:#e60000;
 }
+

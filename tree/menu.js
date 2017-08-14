@@ -59,6 +59,7 @@ function showOli(index) {
 // SUBMENU =========================================
 // accessed on press the Up /Down arrow keys
 function showVli(index) {
+    crt_oli.className = 'olishow';
   //url_adr = '';       // empties this variable
   if(nrvli > 0) {
     url_adr = '';       // empties this variable
@@ -125,9 +126,8 @@ function KeyCheck(e){
           // iv is the submenu id
           //keyboard(url_adr);
           writer(url_adr);
-        } else {
-          writer('nothing line 145');
-        }
+          oli[ih].className = 'oli';
+        } 
         break;
       // F1
       case 112:
@@ -147,12 +147,13 @@ function KeyCheck(e){
         break;
       // ESC
       case 27:
-        vli = [];        // empties $vli
-        nrvli = 0;      // nrvli is the total number of items in submenu
-        iv = 0;
-        ih = 0;
+        //vli = [];        // empties $vli
+        //nrvli = 0;      // nrvli is the total number of items in submenu
+        //iv = 0;
+        //ih = 0;
         showOli(0);
         writer(url_adr);
+        oli[ih].className = 'oli';
         break;
    }
 }
@@ -163,4 +164,8 @@ document.onkeydown = KeyCheck;
 // From Onclick functin, used by Mouse
 function writer(i){
   document.getElementById("block").innerHTML = "Clicked on ID: " + i;
+  // reset all links visibility
+  for(var i=0; i<nroli; i++) {
+    oli[i].className = 'oli';
+  }
 }

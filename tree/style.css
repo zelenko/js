@@ -14,24 +14,17 @@
 }
 
 #menuv {
- position:relative;
- padding:0px;
- margin: 0px;
- font-family: 'Eclipse', 'Courier New', Arial, Helvetica, sans-serif;
+  position:relative;
+  padding:0px;
+  margin: 0px;
+  font-family: 'Eclipse', 'Courier New', Arial, Helvetica, sans-serif;
   font-weight:600;
- font-size: 1em;
- color: #008000;
- border:0px solid #dddddd;
- background-color:#eeefff;
- /*
- display: table; 
- display: inline-block;
-  display: table;
-  float:center;
- */
-display: inline-block;
-float:right;
-
+  font-size: 1em;
+  color: #008000;
+  border:0px solid #dddddd;
+  background-color:#eeefff;
+  display: inline-block;
+  float:right;
 }
 
 /* Properties for TOP horizontal menu; top menu items only */
@@ -46,10 +39,10 @@ float:right;
 }
 /* top menu HOVER keyboard only */
 #menuv > .olishow {
- background-color: #cccfff;
- text-decoration:none;
- border:0px red solid;
- color: #e60000;
+  background-color: #cccfff;
+  text-decoration:none;
+  border:0px red solid;
+  color: #e60000;
 }
 /* top menu hover for keyboard onlyl */
 #menuv > .olishow > a {
@@ -73,15 +66,15 @@ float:right;
   color: #e60000;
 }
 
-  /* Properties for vertical menu */
+/* Properties for vertical menu */
 #menuv .oli ul, #menuv .olishow  ul {
- display:none;
- position:absolute;
- margin:8px auto auto -8px; /*top, right, bottom, left  */
- padding:0px;
- color: #e60000;
+  display:none;
+  position:absolute;
+  margin:8px auto auto -8px; /*top, right, bottom, left  */
+  padding:0px;
+  color: #e60000;
 }
-/*  items inside vertical summenu */
+/* items inside vertical summenu */
 #menuv>li>ul>li {
   position:relative;
   clear:both;
@@ -96,7 +89,7 @@ float:right;
   display:block;
 }
 
-  /* Links in sub-menu */
+/* Links in sub-menu */
 #menuv ul li a {
   display:block;
   background-color:#eeefff;
@@ -106,9 +99,10 @@ float:right;
   text-decoration:none;
 }
 
+/* This is for items selected with keyboard shortcuts or highligted with Mouse */
 #menuv ul li a:hover, #menuv ul .vlishow a {
- background-color:#cccfff;
- text-decoration:none;
- color:#e60000;
+  background-color:#cccfff;
+  text-decoration:none;
+  color:#e60000;
 }
 

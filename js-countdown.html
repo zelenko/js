@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" >
+<head>
+<title>JS count down from 5</title>
+
+<script type="text/javascript">
+window.onload = function() {
+	/* set your parameters(
+	number to countdown from,
+	pause between counts in milliseconds,
+	function to execute when finished
+	)
+	*/
+	startCountDown(5, 1000, timedRefresh2);
+}
+
+function startCountDown(i, p, f) {
+	// store parameters
+	var pause = p;
+	var fn = f;
+	// make reference to div
+	var countDownObj = document.getElementById("countDown");
+	if (countDownObj == null) {
+		// error
+		alert("div not found, check your id");
+		return;
+	}
+	
+	// function inside of function
+	countDownObj.count = function(i) {
+		countDownObj.innerHTML = i;
+		if (i == 0) {
+			fn();
+			return;
+		}
+		
+		setTimeout(function() {
+			// repeat
+			countDownObj.count(i - 1);
+		},
+		pause
+		);
+	}
+	
+	countDownObj.count(i);
+}
+
+// not being used right now
+function timedRefresh(timeoutPeriod) {
+	setTimeout("location.reload(true);",timeoutPeriod);
+}
+
+function timedRefresh2() {
+	setTimeout("location.reload(true);",0);
+}
+
+</script>
+</head>
+<body>
+	<div id="countDown"></div>
+</body>
+</html>

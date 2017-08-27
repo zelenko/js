@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Confirmation Example</title>
+<SCRIPT LANGUAGE="JavaScript">
+      function confirmAction() {
+        return confirm("Do you really want to submit this?")
+      }
+   
+</SCRIPT>
+</head>
+   
+<body>
+<h2><em>Confirmation Example</em></h2>
+<form action="#" method="POST" name="SubscribeForm" onSubmit="return confirmAction()">
+<ol>
+<li>Confirmation Example
+<pre><input type=checkbox name="C1-SKU01" value="SKU01">Confirmation Example
+<input type=checkbox name="C1-SKU04" value="SKU04">Confirmation Example
+<input type=checkbox name="C1-SKU07" value="SKU07">Confirmation Example
+<input type=checkbox name="C1-SKU10" value="SKU10">Confirmation Example
+<input type=checkbox name="C1-SKU02" value="SKU02">Confirmation Example
+</pre>
+  
+</li>
+<li>Confirmation Example <em>Try it:</em><br>
+<br>
+<textarea name="Comments" rows=6 cols=46></textarea></li>
+</ol>
+<p>
+<input type=submit name="Submit" value="Submit">
+</form>
+</body>
+</html>

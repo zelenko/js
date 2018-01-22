@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width">
+<title>HTML5 History API</title>
+
+<link rel="stylesheet" href="/css/html5demos.css">
+
+<script>
+
+// addEvent function declaration
+var addEvent = (function () {
+  if (document.addEventListener) {
+    return function (el, type, fn) {
+      if (el && el.nodeName || el === window) {
+        el.addEventListener(type, fn, false);
+      } else if (el && el.length) {
+        for (var i = 0; i < el.length; i++) {
+          addEvent(el[i], type, fn);
+        }
+      }
+    };
+  } else {
+    return function (el, type, fn) {
+      if (el && el.nodeName || el === window) {
+        el.attachEvent('on' + type, function () { return fn.call(el, window.event); });
+      } else if (el && el.length) {
+        for (var i = 0; i < el.length; i++) {
+          addEvent(el[i], type, fn);
+        }
+      }
+    };
+  }
+})();
+</script>
+
+<style>
+#examples {
+  padding-left: 20px;
+}
+#examples li {
+  list-style: square;
+  padding: 0;
+  margin: 0;
+}
+</style>
+</head>
+<body>
+<section id="wrapper">
+
+<article>
+  <p id="status">HTML5 History API not supported</p>
+  <p><em>Last event fired: <span id="lastevent">(none)</span></em></p>
+  <p><em>Even detail: <span id="eventdetail">(none)</span></em></p>
+  <p>To test the History API, click through the urls below. Note that none of these urls point to <em>real</em> pages. JavaScript will intercept these clicks, load data and the browser address bar will <em>appear</em> to change - but this is the History API in action!</p>
+  <p>Use the back and forward buttons in your browser to navigate the history.</p>
+  <ul id="examples">
+    <li><a href="/history/first">first</a></li>
+    <li><a href="/history/second">second</a></li>
+    <li><a href="/history/third">third</a></li>
+    <li><a href="/history/fourth">fourth</a></li>
+    <li><a href="/">Home</a> (not activated)</li>
+  </ul>
+  <p><a href="/">Home</a></p>
+  <p><small>Note: since these urls aren't real, refreshing the page will land on an invalid url.</small></p>
+  <div id="output"></div>
+</article>
+</section>
+
+<script>
+
+// decraring function and variables
+var $ = function (s) { return document.getElementById(s); },
+    state = $('status'), // element id is status
+    lastevent = $('lastevent'),
+    eventdetail = $('eventdetail'),
+    urlhistory = $('urlhistory'),
+    examples = $('examples'),
+    output = $('output'),
+    template = '<p>URL: <strong>{url}</strong>, name: <strong>{name}</strong>, location: <strong>{location}</strong></p>',
+    data = { // imagine these are ajax requests :)
+      first : {
+        name: "Remy",
+        location: "Brighton, UK"
+      },
+      second: {
+        name: "John",
+        location: "San Francisco, USA"
+      },
+      third: {
+        name: "Jeff",
+        location: "Vancover, Canada"
+      },
+      fourth: {
+        name: "Simon",
+        location: "London, UK"
+      }
+    };
+
+// reportEvent updates data in "lastevent"
+function reportEvent(event) {
+  lastevent.innerHTML = event.type;
+}
+
+// getEventDetail updates data in "eventdetail"
+function getEventDetail(data) {
+    eventdetail.innerHTML = data; // added to show what's happening
+}
+
+
+// reportData updates data in "output"
+function reportData(data) {
+  output.innerHTML = template.replace(/(:?\{(.*?)\})/g, function (a,b,c) {
+    return data[c];
+  });
+}
+
+
+// some logic here
+if (typeof history.pushState === 'undefined') {
+  state.className = 'fail';
+} else {
+  state.className = 'success';
+  state.innerHTML = 'HTML5 History API available';
+}
+
+
+// addEvent for click inside "example" list
+addEvent(examples, 'click', function (event) {
+  var title;
+  
+  event.preventDefault();  // regular click does not work
+  if (event.target.nodeName == 'A') {
+    title = event.target.innerHTML;
+
+    getEventDetail(title + ' ' + event.target.href);
+    data[title].url = event.target.getAttribute('href'); // slightly hacky (the setting), using getAttribute to keep it short
+    history.pushState(data[title], title, event.target.href);
+    reportData(data[title]);
+  } else {
+    getEventDetail(title + ' ' + event.target.href);
+  }
+  reportEvent(event); // added 
+});
+
+
+// addEvent for popstate
+addEvent(window, 'popstate', function (event) {
+  var data = event.state;
+  reportEvent(event);
+  reportData(event.state || { url: "unknown", name: "undefined", location: "undefined" });
+});
+
+
+// addEvent for hashchange
+addEvent(window, 'hashchange', function (event) {
+  reportEvent(event);
+
+  // we won't do this for now - let's stay focused on states
+  /*
+  if (event.newURL) {
+    urlhistory.innerHTML = event.oldURL;
+  } else {
+    urlhistory.innerHTML = "no support for <code>event.newURL/oldURL</code>";
+  }
+  */
+});
+
+// addEvent for pageshow
+addEvent(window, 'pageshow', function (event) {
+  reportEvent(event);
+});
+
+
+// addEvent for pagehide
+addEvent(window, 'pagehide', function (event) {
+  reportEvent(event);
+});
+
+</script>
+
+</body>
+</html>
+
+<!-- credit: https://html5demos.com/history/ -->

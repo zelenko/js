@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="txt"></p>
+
+<button onclick="myFunction()">Start timer</button>
+<button onclick="myStopFunction()">Stop timer</button>
+
+<script>
+    var $ = function (s) { return document.getElementById(s); },
+            x = $('txt');
+    x.innerHTML = "z seconds";
+
+    var myVar;
+    var j = 0;
+
+    function myFunction() {
+        //myVar = setTimeout(function(){ alert("Hello") }, 1000);
+        myVar = window.setInterval(myCallback, 250);
+    }
+
+    function myStopFunction() {
+        clearTimeout(myVar);
+    }
+
+    function myCallback() {
+        j++;
+        x.innerHTML = j
+    }
+</script>
+
+</body>
+</html>

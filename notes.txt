@@ -7,7 +7,7 @@ ng serve --open
 
 
 
-
+js = just in time compiled
 ======================================
 var Car = function() {
   this.wheels = 4;

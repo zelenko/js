@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form id="myForm">
+  A color picker: <input type="color" id="myColor">
+</form>
+
+<p>Click the "Try it" button to display the id of the form the color picker belongs to.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p><b>Note:</b> type="color" is not supported in Internet Explorer 11 and earlier versions or Safari 9.1 and earlier versions.</p>
+
+<p id="demo"></p>
+<p id="cdemo"></p>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myColor").form.id;
+    document.getElementById("demo").innerHTML = x;
+    document.getElementById("cdemo").innerHTML = document.getElementById("myColor").value;
+}
+</script>
+</body>
+</html>

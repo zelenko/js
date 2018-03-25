@@ -1,16 +1,17 @@
-// copy array
-
+// assign values
 var arr = [1,2];
 
 // one way:
 // var arr2 = Object.assign([], arr);
 
 
+// add one more element
 arr.push(3);
 
 console.log(arr)
 
 
-// or this here is another way to copy array
+// copy array
 arr2 = arr.slice();
 
+console.log(arr2);

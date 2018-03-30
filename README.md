@@ -11,4 +11,8 @@
 * [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)
 * [xmlhttprequest](http://devdocs.io/dom/xmlhttprequest/xmlhttprequest)
 
+> First, solve the problem. Then, write the code.
 
+> Features, quality, time: pick two.
+
+> Talk is cheap. Show me the code.

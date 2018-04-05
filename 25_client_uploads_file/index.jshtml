@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+<body>
+
+<div class="container">
+    <!-- Content here -->
+    <nav class="navbar sticky-top navbar-light bg-light">
+        <a class="navbar-brand" href="#">Upload File</a>
+    </nav>
+
+    <div class="row">
+        <div class="col">
+
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Example file input</label>
+                <input type="file" class="form-control-file" id="fileinput">
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div id="results"></div>
+
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+
+    <script type="text/javascript">
+    function readSingleFile(evt) {
+
+        var results = document.getElementById("results");
+        //Retrieve the first (and only!) File from the FileList object
+        var f = evt.target.files[0];
+
+        if (f) {
+            var r = new FileReader();
+            r.onload = function(e) {
+                var contents = e.target.result;
+
+                //contents = contents.replace(/\n/g, "<br />");
+
+                var output = contents.split("\n");
+                var text = "";
+                for (var i = 0; i < output.length; i++){
+
+                    var line = i + " " +output[i] + "<br>";
+                    // https://getbootstrap.com/docs/4.0/content/tables/#hoverable-rows
+                    text = text + line;
+                }
+
+                results.innerHTML = text;
+                alert( "Got the file.n"
+                    +"name: " + f.name + "n"
+                    +"type: " + f.type + "n"
+                    +"size: " + f.size + " bytesn"
+                    + "starts with: " + contents.substr(1, contents.indexOf("n"))
+                );
+            }
+            r.readAsText(f);
+
+        } else {
+            alert("Failed to load file");
+        }
+
+        // source: https://www.w3.org/TR/FileAPI/
+        // source: https://www.htmlgoodies.com/beyond/javascript/read-text-files-using-the-javascript-filereader.html
+    }
+
+document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
+</script>
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

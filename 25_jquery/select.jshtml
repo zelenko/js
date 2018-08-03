@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<select id="example-select">
+  <option value="a">a</option>
+  <option value="b">b</option>
+  <option value="c">c</option>
+  <option value="d">d</option>
+</select>
+
+<script>
+var myobject = {
+    ValueA : 'Text A',
+    ValueB : 'Text B',
+    ValueC : 'Text C'
+};
+
+var select = document.getElementById("example-select");
+for(index in myobject) {
+    //select.options[select.options.length] = new Option(myobject[index], index);
+    select.add( new Option( myobject[index], index ) );
+    console.log("out: " + index + " " + myobject[index]);
+}
+</script>
+  
+</body>
+</html>

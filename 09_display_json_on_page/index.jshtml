@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Our superheroes</title>
-    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-  </head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <title>Our superheroes</title>
+  <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
 
-  <body>
+<body>
 
-      <header>
+  <header>
 
-      </header>
+  </header>
 
-      <section>
+  <section>
 
-      </section>
+  </section>
 
-    <script>
+  <script>
     // https://raw.githubusercontent.com/zelenko/go/master/36_json_and_javascript/index.html
     var header = document.querySelector('header');
     var section = document.querySelector('section');
@@ -29,7 +29,7 @@
     request.responseType = 'json';
     request.send();
 
-    request.onload = function() {
+    request.onload = function () {
       var superHeroes = request.response;
       populateHeader(superHeroes); // header
       showHeroes(superHeroes); // body
@@ -54,12 +54,12 @@
 
     // body
     function showHeroes(jsonObj) {
-      
+
       // get a list of members
       var heroes = jsonObj['members'];
 
-      for(var i = 0; i < heroes.length; i++) {
-          // create HTML tag for each object in array
+      for (var i = 0; i < heroes.length; i++) {
+        // create HTML tag for each object in array
         var myArticle = document.createElement('article');
         var myH2 = document.createElement('h2');
         var myPara1 = document.createElement('p');
@@ -74,10 +74,10 @@
         myPara3.textContent = 'Superpowers:';
 
         var superPowers = heroes[i].powers;
-        for(var j = 0; j < superPowers.length; j++) {
-            var listItem = document.createElement('li'); // create
-            listItem.textContent = superPowers[j]; // populate
-            myList.appendChild(listItem); // add
+        for (var j = 0; j < superPowers.length; j++) {
+          var listItem = document.createElement('li'); // create
+          listItem.textContent = superPowers[j]; // populate
+          myList.appendChild(listItem); // add
         }
 
         // Add
@@ -92,6 +92,7 @@
       }
     }
 
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>

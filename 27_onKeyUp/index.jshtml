@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+<div>
+  <h5>Original content</h5>
+  <p>
+    inside paragraph
+    <span contenteditable="true" onKeyUp="keyWasPressed(event)">inside span</span>
+    inside paragraph
+  </p>
+</div>
+<div>
+  <h5>Output</h5>
+  <div id="output"></div>
+</div>
+
+
+<p id="out1">This is a paragraph. It is editable. Try to change this text.</p>
+<script>
+var baseElement = document.querySelector("p");
+document.getElementById("output").innerHTML =
+         (baseElement.querySelector("div span").innerHTML);
+
+function keyWasPressed(evt){
+	//console.log(evt.keyCode)
+    document.querySelector("#out1").innerHTML = evt.keyCode;
+    document.getElementById("output").innerHTML =
+         (baseElement.querySelector("div span").innerHTML);
+}
+</script>
+
+</body>
+</html>

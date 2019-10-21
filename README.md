@@ -10,6 +10,7 @@
 * [Client side web APIs](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction)
 * [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)
 * [xmlhttprequest](http://devdocs.io/dom/xmlhttprequest/xmlhttprequest)
+* React, Babel, Eslint, Parcel, Yarn
 
 > First, solve the problem. Then, write the code.
 
